@@ -1,0 +1,10 @@
+To do:
+-Update the files so they read from directories. 
+-Write code that can run the other code at once. 
+
+End Goals:
+-Be able to run one file that will generate:
+  -Season Totals for each player
+  -League Leaders for the League
+  -A Sheet of the Best Scores for each player for each week
+  -Box Scores for each game each week. 
