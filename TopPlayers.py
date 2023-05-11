@@ -1,20 +1,27 @@
-#Top 10 Players for each category
-#Must correct Eric's name - use Lowkey for week1. 
+Top 10 Players for each category
+
 import pandas as pd
+import os.path
 from percentage_stats import *
 
 #Commenting out for now - put back when actually doing it.
-#total_weeks = int(input("What week are we up to? Enter integer only (i.e. enter 1,2, etc.)"))
-total_weeks = 2
-#Starting with Week1 - We expect to always have something to start
-SeasonTotals = pd.read_csv("Week1.csv")
-count =2
+total_weeks = int(input("What week are we up to? Enter integer only (i.e. enter 1,2, etc.)"))
+weeks=[]
 
-while count <= total_weeks:
-    csv_name = "Week" + str(count) + ".csv"
-    new_week = pd.read_csv(csv_name)
+for i in range(2,total_weeks+1):
+    weeks.append("Week" + str(i))
+    print(weeks)
+
+#Starting with Week1 - We expect to always have something to start
+SeasonTotals = pd.read_csv((os.path.join("Week1 Files/" ,"BestGame.csv")))
+
+#Week# Files/Best Games/BestGame.csv
+
+for week in weeks:
+    path = week + " Files/"
+    new_week = pd.read_csv((os.path.join(path,"BestGame.csv")))
     SeasonTotals = SeasonTotals.append(new_week)
-    count += 1
+    
 
 '''
 Week1 = pd.read_csv("Week1.csv")
@@ -29,7 +36,7 @@ SeasonTotals = percentage_stats(SeasonTotals)
 
 
 #The Season Totals csv
-SeasonTotals.to_csv("SeasonTotals.csv")
+SeasonTotals.to_csv(os.path.join("SeasonFiles/", "SeasonTotals.csv"))
 
 #Making Top 10 Csv.
 top_ten = pd.DataFrame()
@@ -53,5 +60,6 @@ for category in top_categories:
     top_ten = top_ten.append(top_players)
 
 print(top_ten)
-top_ten.to_csv("TESTTEN.csv")
+top_ten.to_csv(os.path.join("SeasonFiles/", "TopTen.csv"))
+
 
