@@ -29,4 +29,6 @@ def gamebook_agg(gamebook):
     gamebook = gamebook.reset_index()
     return gamebook
 
-
+def total_bases(gamebook):
+    gamebook['Total Bases']= (gamebook['Single']+(2*gamebook['Double'])+(3*gamebook['Triple'])+(4*gamebook['Home Run']))
+    return gamebook
