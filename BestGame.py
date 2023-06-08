@@ -3,9 +3,14 @@
 import pandas as pd
 import os.path
 from percentage_stats import total_bases
-
+'''
+def StatsDFPrepare(csv):
+    GameStats = pd.read_csv(csv)
+    return GameStats
+'''
 week = input("What Week?")
-
+#Temporary putting this in to speed up testing.
+#week = 2
 
 #Fix This - Needless repeating.
 path = ("Week" + week + " Files/")

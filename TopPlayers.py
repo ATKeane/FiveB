@@ -1,4 +1,4 @@
-Top 10 Players for each category
+#Top 10 Players for each category
 
 import pandas as pd
 import os.path
@@ -61,5 +61,4 @@ for category in top_categories:
 
 print(top_ten)
 top_ten.to_csv(os.path.join("SeasonFiles/", "TopTen.csv"))
-
 

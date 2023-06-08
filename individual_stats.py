@@ -3,7 +3,7 @@
 import pandas as pd
 import os.path
 
-
+#Commenting this out for now - fix for actual use. 
 total_weeks = input("How many weeks so far?")
 counter = 1
 weeks = []
@@ -37,4 +37,3 @@ for player in players:
     print(file_name)
     print(player_sheet)
     player_sheet.to_csv(os.path.join('Individual Stats/', file_name))
-
