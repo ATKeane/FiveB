@@ -10,6 +10,7 @@ def percentage_stats(gamebook):
     gamebook['SLG']=(gamebook['Single']+(2*gamebook['Double'])+(3*gamebook['Triple'])+(4*gamebook['Home Run']))/(gamebook['PA']-gamebook['SAC'])
     gamebook['OBP']=(gamebook['Single']+gamebook['Double']+gamebook['Triple']+gamebook['Home Run'])/(gamebook['PA'])
     gamebook['OPS']=gamebook['SLG']+gamebook['OBP']
+    gamebook['Hits']=gamebook['Single']+gamebook['Double']+gamebook['Triple']+gamebook['Home Run']
     #print("Percent gamebook below after calc")
     #print(gamebook)
     return gamebook
