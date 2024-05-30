@@ -28,13 +28,11 @@ def individual_stats(week):
             week_path = week + " Files/" + game + "/"
             week_file = week+game+".csv"
             week_game = pd.read_csv(week_path+week_file)
-            player_totals = player_totals.append(week_game)
+            #player_totals = player_totals.append(week_game)
+            player_totals = pd.concat([player_totals,week_game])
 
-    print(player_totals)
        
     for player in players:
         player_sheet = player_totals[player_totals['Name']==player]
         file_name = player + ".csv"
-        print(file_name)
-        print(player_sheet)
         player_sheet.to_csv(os.path.join('Individual Stats/', file_name))

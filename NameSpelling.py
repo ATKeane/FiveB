@@ -13,6 +13,7 @@ def Name_Check (BoxScore):
     incorrect_names = list(incorrect_names_df["Player"])
     '''
     for i in range(len(incorrect_names)):
+        print(incorrect_names[i])
         if incorrect_names[i] in correct_names:
             continue
         misspelling = 100

@@ -202,9 +202,9 @@ def ScoreBookCode(week):
             visitor_book['Loss']=1
             home_book['Win']=1
             home_book['Loss']=0
-
-
-        gamebook = visitor_book.append(home_book)
+        #Used to concat the books together. Previous appended. 
+        books = [visitor_book,home_book]
+        gamebook = pd.concat(books)
         gamebook['PA']=gamebook['PA']-gamebook["Skips"]
         gamebook=gamebook.drop(columns=['Skips'])
 

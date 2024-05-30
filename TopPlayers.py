@@ -21,8 +21,8 @@ def TopPlayers(total_weeks):
     for week in weeks:
         path = week + " Files/"
         new_week = pd.read_csv((os.path.join(path,"BestGame.csv")))
-        SeasonTotals = SeasonTotals.append(new_week)
-        
+        #SeasonTotals = SeasonTotals.append(new_week)
+        SeasonTotals = pd.concat([SeasonTotals,new_week])
 
     '''
     Week1 = pd.read_csv("Week1.csv")
@@ -34,10 +34,13 @@ def TopPlayers(total_weeks):
 
     SeasonTotals = gamebook_agg(SeasonTotals)
     SeasonTotals = percentage_stats(SeasonTotals)
+    #Ordering the columns
+    SeasonTotals = SeasonTotals[['Name','PA','Single','Double','Triple','Home Run','RBI','R','Hits',
+                                 'Total Bases','AVG','SLG','OBP','OPS','Fielder\'s Choice', 'Fly Out', 'Pop Out','Ground Out','Line Out','Strike Out','SAC','TeamScore','Win','Loss']]
 
 
     #The Season Totals csv
-    SeasonTotals.to_csv(os.path.join("SeasonFiles/", "SeasonTotals.csv"))
+    SeasonTotals.to_csv(os.path.join("SeasonFiles/", "SeasonTotals.csv"),index = False)
 
     #Making Top 10 Csv.
     top_ten = pd.DataFrame()
@@ -58,8 +61,7 @@ def TopPlayers(total_weeks):
     for category in top_categories:
         top_players = SeasonTotals.nlargest(10, category)
         top_players = top_players[['Name',category]]
-        top_ten = top_ten.append(top_players)
+        #top_ten = top_ten.append(top_players)
+        top_ten = pd.concat([top_ten,top_players])
 
-    print(top_ten)
-    top_ten.to_csv(os.path.join("SeasonFiles/", "TopTen.csv"))
-
+    top_ten.to_csv(os.path.join("SeasonFiles/", "TopTen.csv"), index = False)

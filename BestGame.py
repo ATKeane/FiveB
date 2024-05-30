@@ -17,7 +17,8 @@ def BestGame(week):
     Game2Stats = pd.read_csv(os.path.join(path2, "Week"+str(week)+"Game2.csv"))
 
     #Adding the Weeks together
-    FullStats = Game1Stats.append(Game2Stats)
+    Game_Stats = [Game1Stats,Game2Stats]
+    FullStats = pd.concat(Game_Stats)
 
     #Total Bases on FullStats
     FullStats = total_bases(FullStats)
@@ -32,7 +33,8 @@ def BestGame(week):
             for stat in ranking_list:
                 BestGamePlayer = (playerStats[playerStats[stat]==playerStats[stat].max()])
                 if len(BestGamePlayer.index) == 1:
-                    BestGame = BestGame.append(BestGamePlayer)
+                    #BestGame = BestGame.append(BestGamePlayer)
+                    BestGame = pd.concat([BestGame,BestGamePlayer])
                     break
         return(BestGame)
 
